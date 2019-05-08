@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -29,6 +30,17 @@ public class MenuController {
     @FXML
     void createMap(ActionEvent event) {
 
+    }
+    
+    @FXML
+    void showScores(ActionEvent event) {
+    	Alert score = new Alert(AlertType.INFORMATION);
+    	score.setTitle("Goblin Slayer");
+    	score.setHeaderText("High Scores");
+    	score.initStyle(StageStyle.DECORATED);
+    	score.setContentText("NickName \t\t Game Time \n");
+    	
+    	score.show();
     }
 
     @FXML
@@ -55,6 +67,7 @@ public class MenuController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setTitle("Goblin Slayer");
 		stage.setScene(scene);
+		stage.getIcons().add(new Image("icon.png"));
 		stage.show();
     }
 
