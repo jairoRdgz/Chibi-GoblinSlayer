@@ -5,10 +5,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MenuController">
    <children>
-      <Button layoutX="197.0" layoutY="170.0" mnemonicParsing="false" onAction="#startGame" prefHeight="61.0" prefWidth="183.0" text="Start Game" />
+      <Button fx:id="gameStarter" layoutX="197.0" layoutY="170.0" mnemonicParsing="false" onAction="#startGame" prefHeight="61.0" prefWidth="183.0" text="Start Game" />
       <Label layoutX="110.0" layoutY="45.0" prefHeight="90.0" prefWidth="358.0" text="Goblin Slayer">
          <font>
             <Font size="60.0" />

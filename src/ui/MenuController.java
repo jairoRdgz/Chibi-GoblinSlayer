@@ -1,14 +1,24 @@
 package ui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class MenuController {
+	
+	@FXML
+	private Button gameStarter;
 
     @FXML
     private ResourceBundle resources;
@@ -37,8 +47,15 @@ public class MenuController {
     }
 
     @FXML
-    void startGame(ActionEvent event) {
-
+    void startGame(ActionEvent event) throws IOException {
+        Parent game = FXMLLoader.load(getClass().getResource("Game.fxml"));
+        
+        Scene scene = new Scene(game);
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.setTitle("Goblin Slayer");
+		stage.setScene(scene);
+		stage.show();
     }
 
     @FXML
