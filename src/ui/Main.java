@@ -18,6 +18,7 @@ public class Main extends Application{
 		Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
 		
 		Scene scene = new Scene(root);
+		
 		stage.setTitle("Goblin Slayer");
 		stage.setScene(scene);
 		stage.getIcons().add(new Image("icon.png"));
