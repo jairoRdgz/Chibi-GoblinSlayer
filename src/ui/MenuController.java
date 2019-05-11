@@ -18,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import threads.AtackThread;
 
 /**
  *This class is in charge of controlling the GUI of the Menu screen for this program
@@ -40,6 +41,8 @@ public class MenuController{
 
     @FXML
     private URL location;
+    
+    private AtackThread atack;
 
     //--------------------------------------------------------------------------------------
     //METHODS
@@ -118,8 +121,9 @@ public class MenuController{
 				}else if(e.getCode().equals(KeyCode.D)) {
 					gc.moveGround(4);
 					gc.movePlayer(4);
-				}else if(e.getCode().equals(KeyCode.SPACE)) {
-					gc.atack();
+				}else if(e.getCode().equals(KeyCode.Q)) {
+					atack = new AtackThread(gc);
+					atack.start();
 				}
 					
 			}

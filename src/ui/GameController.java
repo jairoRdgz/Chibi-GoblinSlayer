@@ -96,17 +96,18 @@ public class GameController {
 		}
 	}
 	
-	public void atack() {
-		if(atackBox.getLayoutX()!= player.getLayoutX()) {
-			atackBox.setHeight(atackBox.getHeight()-20);
-			atackBox.setWidth(atackBox.getWidth()-20);
-			atackBox.setLayoutX(atackBox.getLayoutX()+10);
-			atackBox.setLayoutY(atackBox.getLayoutY()+10);
-		}else {
+	public void atack(int atack) {
+		System.out.println("boooooommmm");
+		if(atack == 1) {
 			atackBox.setHeight(atackBox.getHeight()+20);
 			atackBox.setWidth(atackBox.getWidth()+20);
 			atackBox.setLayoutX(atackBox.getLayoutX()-10);
 			atackBox.setLayoutY(atackBox.getLayoutY()-10);
+		}else if(atack ==2){
+			atackBox.setHeight(atackBox.getHeight()-20);
+			atackBox.setWidth(atackBox.getWidth()-20);
+			atackBox.setLayoutX(atackBox.getLayoutX()+10);
+			atackBox.setLayoutY(atackBox.getLayoutY()+10);
 		}
 	}
 	
@@ -119,9 +120,9 @@ public class GameController {
 		assert ground != null : "fx:id=\"ground\" was not injected: check your FXML file 'Game.fxml'.";
 		assert player != null : "fx:id=\"player\" was not injected: check your FXML file 'Game.fxml'.";
 
-		Image img = new Image("player.jpg");
+		Image img = new Image("images/player.jpg");
 		player.setFill(new ImagePattern(img));
-		Image img1 = new Image("map.png");
+		Image img1 = new Image("images/map.png");
 		ground.setBackground(new Background(new BackgroundImage(img1, null, null, null, null)));
 	}
 }
