@@ -1,12 +1,14 @@
 package model;
 
+import java.util.Random;
+
 public class Level {
 	private Player player;
-	private Enemy[] enemys;
+	private Enemy[] enemies;
 	private Object[] objects;
 	
 	public Level() {
-		
+
 	}
 
 	public Player getPlayer() {
@@ -14,7 +16,7 @@ public class Level {
 	}
 
 	public Enemy[] getEnemys() {
-		return enemys;
+		return enemies;
 	}
 
 	public Object[] getObjects() {
@@ -26,12 +28,26 @@ public class Level {
 	}
 
 	public void setEnemys(Enemy[] enemys) {
-		this.enemys = enemys;
+		this.enemies = enemys;
 	}
 
 	public void setObjects(Object[] objects) {
 		this.objects = objects;
 	}
 	
+	public void createPlayer() {
+		//tener en cuenta el tamaño del jugador y la posicion de inicio siempre seran las mismas
+		player = new Player(20, 20, 53, 78);
+	}
 	
+	public void createEnemies() {
+		
+		Random rnd = new Random();
+		enemies = new Enemy[rnd.nextInt(20)];
+	}
+	
+	public void createObjects() {
+		Random rnd = new Random();
+		objects = new Object[rnd.nextInt(7)];
+	}
 }

@@ -109,10 +109,6 @@ public class GameController {
 			atackBox.setLayoutY(atackBox.getLayoutY()-10);
 		}
 	}
-
-	public Rectangle getPlayer() {
-		return player;
-	}
 	
 	public GameController getController() {
 		return this;
@@ -127,6 +123,5 @@ public class GameController {
 		player.setFill(new ImagePattern(img));
 		Image img1 = new Image("map.png");
 		ground.setBackground(new Background(new BackgroundImage(img1, null, null, null, null)));
-
 	}
 }

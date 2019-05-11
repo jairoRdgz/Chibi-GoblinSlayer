@@ -19,8 +19,19 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ *This class is in charge of controlling the GUI of the Menu screen for this program
+ *is in charge of creating and opening the game screen where the game is going to be played,
+ * showing the top players and creating a new map you can play in.
+ * @author Critian Camilo Lasso
+ * @author Jairo E. Rodriguez
+ * @author Santiago Valencia
+ */
 public class MenuController{
 	
+	//---------------------------------------------------------------------------------------
+	//ATRIBUTES, RELATIONS AND FXML OBJECTS
+	//---------------------------------------------------------------------------------------
 	@FXML
 	private Button gameStarter;
 
@@ -30,11 +41,24 @@ public class MenuController{
     @FXML
     private URL location;
 
+    //--------------------------------------------------------------------------------------
+    //METHODS
+    //--------------------------------------------------------------------------------------
+    
+    /**
+     *Creates a map to play in hard mode 
+     *@param event  is the click you do into the button so the program knows when you want to create and play your own level
+     */
     @FXML
     void createMap(ActionEvent event) {
 
     }
     
+    /**
+     * Creates an alert the will pop up to show the top 10 players of the game sorting them by the
+     * time they took to pass all the game
+     * @param event is the click you do into the button so the program knows when you want to see the high scores
+     */
     @FXML
     void showScores(ActionEvent event) {
     	Alert score = new Alert(AlertType.INFORMATION);
@@ -45,7 +69,12 @@ public class MenuController{
     	
     	score.show();
     }
-
+    
+    /**
+     * Creates an alert that will pop up to show some of the basic information of how to play the game
+     * also comes with some useful information about the program itself.
+     * @param event is the click you do into the button so the program knows when you want to see the instructions
+     */
     @FXML
     void helpWindow(ActionEvent event) {
     	Alert score = new Alert(AlertType.INFORMATION);
@@ -61,7 +90,11 @@ public class MenuController{
     	score.show();
     }
     
-
+    /**
+     * Load the actual Game screen of the program, where the program is going to be played
+     * @param event is the click you do into the button so the program knows when you want to do this action
+     * @exception throws an IOException in case the method is unable to load the .fxml file
+     * */
     @FXML
     void startGame(ActionEvent event) throws IOException {
     	

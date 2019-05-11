@@ -1,44 +1,98 @@
 package model;
 
-public class Score {
+public class Score implements Comparable<Score>{
+	//---------------------------------------------------------------------
+	//ATRIBUTES, RELATIONS
+	//---------------------------------------------------------------------
+	
+	private long score;
+	private String nick;
+	private Score left;
+	private Score rigth;
+	
+	//---------------------------------------------------------------------
+	//METHODS
+	//---------------------------------------------------------------------
+	
+	/**
+	 * 
+	 */
+	public Score(long s, String n ){
+		this.score = s;
+		this.nick = n;
+	}
 
-//	private int time;
-//<<<<<<< HEAD
-//	
-//	public Score(int time) {
-//		this.time = time;
-//=======
-//	private String nickName;
-//	
-//	public Score(int time, String nickName) {
-//		this.time = time;
-//		this.nickName = nickName;
-//>>>>>>> b7a4dc8d9a9f52406fc5016404220a243017724a
-//	}
-//
-//	public int getTime() {
-//		return time;
-//	}
-//
-//	public void setTime(int time) {
-//		this.time = time;
-//	}
-//<<<<<<< HEAD
-//=======
-//
-//	public String getNickName() {
-//		return nickName;
-//	}
-//
-//	public void setNickName(String nickName) {
-//		this.nickName = nickName;
-//	}
-//	
-//	public String toString() {
-//		String msg = nickName +": "+time;
-//		return msg;
-//	}
-//>>>>>>> b7a4dc8d9a9f52406fc5016404220a243017724a
-//	
+	/**
+	 * 
+	 */
+	public long getScore() {
+		return score;
+	}
+
+	/**
+	 * 
+	 */
+	public String getNick() {
+		return nick;
+	}
+
+	/**
+	 * 
+	 */
+	public Score getLeft() {
+		return left;
+	}
+
+	/**
+	 * 
+	 */
+	public Score getRigth() {
+		return rigth;
+	}
+
+	/**
+	 * 
+	 */
+	public void setScore(long score) {
+		this.score = score;
+	}
+
+	/**
+	 * 
+	 */
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+	
+	/**
+	 * 
+	 */
+	public void setLeft(Score left) {
+		this.left = left;
+	}
+	
+	/**
+	 * 
+	 */
+	public void setRigth(Score rigth) {
+		this.rigth = rigth;
+	}
+
+	/**
+	 * This method is in charge of setting the parameters which this object is going to be comparated
+	 * @param o is going to be the objecto to compare with
+	 */
+	@Override
+	public int compareTo(Score o) {
+		int comparator ;
+		if(score<o.score) {
+			comparator = -1;
+		}else if(score>o.score) {
+			comparator = 1;
+		}else {
+			comparator = 0;
+		}
+		return comparator;
+	}
 	
 }
