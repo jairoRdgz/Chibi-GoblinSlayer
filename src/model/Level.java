@@ -35,9 +35,9 @@ public class Level {
 		this.objects = objects;
 	}
 	
-	public void createPlayer() {
+	public void createNewPlayer() {
 		//tener en cuenta el tamaño del jugador y la posicion de inicio siempre seran las mismas
-		player = new Player(20, 20, 53, 78);
+		
 	}
 	
 	public void createEnemies() {

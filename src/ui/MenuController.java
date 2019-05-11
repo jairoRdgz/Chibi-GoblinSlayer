@@ -121,7 +121,7 @@ public class MenuController{
 				}else if(e.getCode().equals(KeyCode.D)) {
 					gc.moveGround(4);
 					gc.movePlayer(4);
-				}else if(e.getCode().equals(KeyCode.Q)) {
+				}else if(e.getCode().equals(KeyCode.SPACE)) {
 					atack = new AtackThread(gc);
 					atack.start();
 				}

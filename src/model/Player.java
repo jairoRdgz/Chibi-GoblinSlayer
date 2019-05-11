@@ -4,14 +4,18 @@ public class Player {
 	
 	private double posX;
 	private double posY;
-	private double layoutX;
-	private double layoutY;
+	private double width;
+	private double height;
+	private int lives;
+	private int damage;
 	
-	public Player(double pX, double pY, double lX, double lY) {
+	public Player(double pX, double pY,double w, double h, int l, int d) {
 		this.posX = pX;
 		this.posY = pY;
-		this.layoutX = lX;
-		this.layoutY = lY;
+		this.width = w;
+		this.height = h;
+		this.lives = l;
+		this.damage = d;
 		
 	}
 
@@ -23,12 +27,20 @@ public class Player {
 		return posY;
 	}
 
-	public double getLayoutX() {
-		return layoutX;
+	public double getWidth() {
+		return width;
 	}
 
-	public double getLayoutY() {
-		return layoutY;
+	public double getHeight() {
+		return height;
+	}
+
+	public int getLives() {
+		return lives;
+	}
+
+	public int getDamage() {
+		return damage;
 	}
 
 	public void setPosX(double posX) {
@@ -39,12 +51,20 @@ public class Player {
 		this.posY = posY;
 	}
 
-	public void setLayoutX(double layoutX) {
-		this.layoutX = layoutX;
+	public void setWidth(double width) {
+		this.width = width;
 	}
 
-	public void setLayoutY(double layoutY) {
-		this.layoutY = layoutY;
+	public void setHeight(double height) {
+		this.height = height;
+	}
+
+	public void setLives(int lives) {
+		this.lives = lives;
+	}
+
+	public void setDamage(int damage) {
+		this.damage = damage;
 	}
 	
 	

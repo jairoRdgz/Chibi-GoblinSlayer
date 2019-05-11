@@ -97,13 +97,12 @@ public class GameController {
 	}
 	
 	public void atack(int atack) {
-		System.out.println("boooooommmm");
 		if(atack == 1) {
 			atackBox.setHeight(atackBox.getHeight()+20);
 			atackBox.setWidth(atackBox.getWidth()+20);
 			atackBox.setLayoutX(atackBox.getLayoutX()-10);
 			atackBox.setLayoutY(atackBox.getLayoutY()-10);
-		}else if(atack ==2){
+		}else if(atack == 2){
 			atackBox.setHeight(atackBox.getHeight()-20);
 			atackBox.setWidth(atackBox.getWidth()-20);
 			atackBox.setLayoutX(atackBox.getLayoutX()+10);

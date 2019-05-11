@@ -1,22 +1,28 @@
 package threads;
 
-import ui.GameController;
+import ui.GameController;;
 
 public class AtackThread extends Thread{
 	
-	private GameController gui;
+	private GameController game;
 	
-	public AtackThread(GameController g) {
-		gui = g;
+	public AtackThread(GameController gui) {
+		game = gui;
 	}
-
-	public void Run() {
-		gui.atack(1);
+	
+	public void run() {
+		
+		game.atack(1);
+		System.out.println("boomm");
 		try {
-			sleep(3000);
+			sleep(500);
 		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		gui.atack(2);
+		System.out.println("bammm");
+		game.atack(2);
+		
 	}
+	
 }
