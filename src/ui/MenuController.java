@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -61,50 +64,43 @@ public class MenuController{
 
     @FXML
     void startGame(ActionEvent event) throws IOException {
-        Parent game = FXMLLoader.load(getClass().getResource("Game.fxml"));
-        
-        Scene scene = new Scene(game);
-        
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    	
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Game.fxml"));
+		Parent root = loader.load();
+		GameController gc = loader.getController();
+		Scene scene = new Scene(root);
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent e) {
+				if(e.getCode().equals(KeyCode.W)) {
+					gc.moveGround(1);
+					gc.movePlayer(1);
+				}else if(e.getCode().equals(KeyCode.S)) {
+					gc.moveGround(2);
+					gc.movePlayer(2);
+				}else if(e.getCode().equals(KeyCode.A)) {
+					gc.moveGround(3);
+					gc.movePlayer(3);
+				}else if(e.getCode().equals(KeyCode.D)) {
+					gc.moveGround(4);
+					gc.movePlayer(4);
+				}else if(e.getCode().equals(KeyCode.SPACE)) {
+					gc.atack();
+				}
+					
+			}
+		});
+		
 		stage.setTitle("Goblin Slayer");
 		stage.setScene(scene);
 		stage.getIcons().add(new Image("icon.png"));
 		stage.show();
+		
         
-        scene.setOnKeyPressed(evento ->{
-			switch(evento.getCode()) {
-			case W:
-				System.out.print("Mover pa' arriba\n");
-				break;
-			case CHANNEL_UP:
-				System.out.print("Mover pa' arriba\n");
-				break;
-			case S:
-				System.out.print("Mover pa' abajo\n");
-				break;
-			case KP_DOWN:
-				System.out.print("Mover pa' abajo\n");
-				break;
-			case A:
-				System.out.print("Mover pa' la derecha\n");
-				break;
-			case KP_LEFT:
-				System.out.print("Mover pa' la derecha\n");
-				break;
-			case D:
-				System.out.print("Mover pa' la izquierda\n");
-				break;
-			case KP_RIGHT:
-				System.out.print("Mover pa' la izquierda\n");
-				break;
-			default:
-				break;
-			}
-		});
     }
 
     @FXML
     void initialize() {
-
     }
 }

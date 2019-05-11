@@ -15,10 +15,10 @@ public class Main extends Application{
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
+		Parent root = loader.load();
 		
 		Scene scene = new Scene(root);
-		
 		stage.setTitle("Goblin Slayer");
 		stage.setScene(scene);
 		stage.getIcons().add(new Image("icon.png"));
