@@ -101,4 +101,12 @@ public class Score implements Comparable<Score>, Serializable{
 		return comparator;
 	}
 	
+	public String toString() {
+		String scores = "";
+		
+		scores = nick+"\t\t"+score+"\n";
+		
+		return scores;
+	}
+	
 }
