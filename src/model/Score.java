@@ -86,7 +86,7 @@ public class Score implements Comparable<Score>, Serializable{
 
 	/**
 	 * This method is in charge of setting the parameters which this object is going to be comparated
-	 * @param o is going to be the objecto to compare with
+	 * @param o is going to be the object to compare with
 	 */
 	@Override
 	public int compareTo(Score o) {

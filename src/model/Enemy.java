@@ -1,24 +1,35 @@
 package model;
 
-public class Enemy {
+public class Enemy extends Character{
 	public static final short GOBLIN = 1;
 	public static final short CHAMPION = 2;
 	public static final short LORD = 3;
 	
 	private short type;
-	private double posX;
-	private double posY;
-	private double layoutX;
-	private double layoutY;
+	private double posx;
+	private double posy;
+	private double width;
+	private double heigth;
+	private short lives;
 	
-	public Enemy(double pX, double pY, double lX, double lY, short t) {
-		this.posX = pX;
-		this.posY = pY;
-		this.layoutX = lX;
-		this.layoutY = lY;
-		this.type = t;
+	public Enemy(short t, double x, double y, double w, double h, short l) {
+		super(x,y,w,h);
+		type = t;
+		lives(t);
 	}
 	
+	private void lives(short types) {
+		if(types == GOBLIN) {
+			lives = 3;
+		}else if (types == CHAMPION) {
+			lives = 6;
+		}else if(types == LORD) {
+			lives = 15;
+		}else {
+			lives = 3;
+		}
+	}
+
 	public short getType() {
 		return type;
 	}
@@ -27,37 +38,44 @@ public class Enemy {
 		this.type = type;
 	}
 
-
-	public double getPosX() {
-		return posX;
+	public double getPosx() {
+		return posx;
 	}
 
-	public double getPosY() {
-		return posY;
+	public void setPosx(double posx) {
+		this.posx = posx;
 	}
 
-	public double getLayoutX() {
-		return layoutX;
+	public double getPosy() {
+		return posy;
 	}
 
-	public double getLayoutY() {
-		return layoutY;
+	public void setPosy(double posy) {
+		this.posy = posy;
 	}
 
-	public void setPosX(double posX) {
-		this.posX = posX;
+	public double getWidth() {
+		return width;
 	}
 
-	public void setPosY(double posY) {
-		this.posY = posY;
+	public void setWidth(double width) {
+		this.width = width;
 	}
 
-	public void setLayoutX(double layoutX) {
-		this.layoutX = layoutX;
+	public double getHeigth() {
+		return heigth;
 	}
 
-	public void setLayoutY(double layoutY) {
-		this.layoutY = layoutY;
+	public void setHeigth(double heigth) {
+		this.heigth = heigth;
+	}
+
+	public short getLives() {
+		return lives;
+	}
+
+	public void setLives(short lives) {
+		this.lives = lives;
 	}
 	
 	
