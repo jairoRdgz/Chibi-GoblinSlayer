@@ -125,7 +125,7 @@ public class GameController {
 
 		Image img = new Image("images/player.jpg");
 		player.setFill(new ImagePattern(img));
-		Image img1 = new Image("images/map.png");
+		Image img1 = new Image("images/map2.jpg");
 		fondo.setImage(img1);
 	}
 }
