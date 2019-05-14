@@ -14,6 +14,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.Pane;
@@ -41,6 +42,9 @@ public class GameController {
 
 	@FXML
 	private Circle endGame;
+	
+	@FXML
+	private ImageView fondo;
 
 	@FXML
 	void backToMenu(ActionEvent event) throws IOException {
@@ -122,6 +126,6 @@ public class GameController {
 		Image img = new Image("images/player.jpg");
 		player.setFill(new ImagePattern(img));
 		Image img1 = new Image("images/map.png");
-		ground.setBackground(new Background(new BackgroundImage(img1, null, null, null, null)));
+		fondo.setImage(img1);
 	}
 }
