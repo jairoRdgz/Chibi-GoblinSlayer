@@ -22,6 +22,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import model.Game;
 
 public class GameController {
 
@@ -45,6 +46,8 @@ public class GameController {
 	
 	@FXML
 	private ImageView fondo;
+	
+	private Game game;
 
 	@FXML
 	void backToMenu(ActionEvent event) throws IOException {
@@ -84,19 +87,31 @@ public class GameController {
 		}
 	}
 
-	public void movePlayer(int movement) { 
+	public void movePlayer(int movement) {
 		if(movement == 1) {
-			player.setY(player.getY() + 10);
-			atackBox.setY(atackBox.getY() + 10);
-		}else if(movement == 2) {
+			//Up
 			player.setY(player.getY() - 10);
 			atackBox.setY(atackBox.getY() - 10);
+			Image img1 = new Image("images/player2.jpg");
+			player.setFill(new ImagePattern(img1));
+		}else if(movement == 2) {
+			//Down
+			player.setY(player.getY() + 10);
+			atackBox.setY(atackBox.getY() + 10);
+			Image img1 = new Image("images/player1.jpg");
+			player.setFill(new ImagePattern(img1));
 		}else  if(movement == 3) {
-			player.setX(player.getX() + 10);
-			atackBox.setX(atackBox.getX() + 10);
-		}else {
+			//Left
 			player.setX(player.getX() - 10);
 			atackBox.setX(atackBox.getX() - 10);
+			Image img1 = new Image("images/player3.jpg");
+			player.setFill(new ImagePattern(img1));
+		}else {
+			//Rigth
+			player.setX(player.getX() + 10);
+			atackBox.setX(atackBox.getX() + 10);
+			Image img1 = new Image("images/player4.jpg");
+			player.setFill(new ImagePattern(img1));
 		}
 	}
 	
@@ -123,7 +138,7 @@ public class GameController {
 		assert ground != null : "fx:id=\"ground\" was not injected: check your FXML file 'Game.fxml'.";
 		assert player != null : "fx:id=\"player\" was not injected: check your FXML file 'Game.fxml'.";
 
-		Image img = new Image("images/player.jpg");
+		Image img = new Image("images/player1.jpg");
 		player.setFill(new ImagePattern(img));
 		Image img1 = new Image("images/map2.jpg");
 		fondo.setImage(img1);

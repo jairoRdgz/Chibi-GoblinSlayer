@@ -7,8 +7,8 @@ public class Level {
 	private Enemy[] enemies;
 	private Object[] objects;
 	
-	public Level() {
-
+	public Level(Player play) {
+		play = createNewPlayer();
 	}
 
 	public Player getPlayer() {
@@ -35,19 +35,21 @@ public class Level {
 		this.objects = objects;
 	}
 	
-	public void createNewPlayer() {
-		//tener en cuenta el tamaño del jugador y la posicion de inicio siempre seran las mismas
-		
+	public Player createNewPlayer() {
+		Player player = new Player(0.0, 0.0, 78.0, 53.0);
+		return player;
 	}
 	
-	public void createEnemies() {
+	public Enemy[] createEnemies() {
 		
 		Random rnd = new Random();
 		enemies = new Enemy[rnd.nextInt(20)];
+		return enemies;
 	}
 	
-	public void createObjects() {
+	public Object[] createObjects() {
 		Random rnd = new Random();
 		objects = new Object[rnd.nextInt(7)];
+		return objects;
 	}
 }

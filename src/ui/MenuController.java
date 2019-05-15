@@ -110,16 +110,12 @@ public class MenuController{
 			@Override
 			public void handle(KeyEvent e) {
 				if(e.getCode().equals(KeyCode.W)) {
-					gc.moveGround(1);
 					gc.movePlayer(1);
 				}else if(e.getCode().equals(KeyCode.S)) {
-					gc.moveGround(2);
 					gc.movePlayer(2);
 				}else if(e.getCode().equals(KeyCode.A)) {
-					gc.moveGround(3);
 					gc.movePlayer(3);
 				}else if(e.getCode().equals(KeyCode.D)) {
-					gc.moveGround(4);
 					gc.movePlayer(4);
 				}else if(e.getCode().equals(KeyCode.SPACE)) {
 					atack = new AtackThread(gc);
