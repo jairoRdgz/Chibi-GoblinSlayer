@@ -1,71 +1,71 @@
 package model;
 
-public class Player {
+public class Player extends Character{
 	
-	private double posX;
-	private double posY;
+	public static final short DEFAULT_LIVES =3 ;
+	public static final short DEFAULT_DAMAGE = 1;
+	
+	private double posx;
+	private double posy;
 	private double width;
-	private double height;
-	private int lives;
-	private int damage;
+	private double heigth;
+	private short lives;
+	private short damage;
 	
-	public Player(double pX, double pY,double w, double h, int l, int d) {
-		this.posX = pX;
-		this.posY = pY;
-		this.width = w;
-		this.height = h;
-		this.lives = l;
-		this.damage = d;
-		
+	public Player(double x, double y, double w, double h) {
+		super(x,y,w,h);
+		this.lives = DEFAULT_LIVES;
+		this.damage = DEFAULT_DAMAGE;
 	}
 
-	public double getPosX() {
-		return posX;
+	public double getPosx() {
+		return posx;
 	}
 
-	public double getPosY() {
-		return posY;
+	public void setPosx(double posx) {
+		this.posx = posx;
+	}
+
+	public double getPosy() {
+		return posy;
+	}
+
+	public void setPosy(double posy) {
+		this.posy = posy;
 	}
 
 	public double getWidth() {
 		return width;
 	}
 
-	public double getHeight() {
-		return height;
-	}
-
-	public int getLives() {
-		return lives;
-	}
-
-	public int getDamage() {
-		return damage;
-	}
-
-	public void setPosX(double posX) {
-		this.posX = posX;
-	}
-
-	public void setPosY(double posY) {
-		this.posY = posY;
-	}
-
 	public void setWidth(double width) {
 		this.width = width;
 	}
 
-	public void setHeight(double height) {
-		this.height = height;
+	public double getHeigth() {
+		return heigth;
 	}
 
-	public void setLives(int lives) {
+	public void setHeigth(double heigth) {
+		this.heigth = heigth;
+	}
+
+	public short getLives() {
+		return lives;
+	}
+
+	public void setLives(short lives) {
 		this.lives = lives;
 	}
 
-	public void setDamage(int damage) {
+	public short getDamage() {
+		return damage;
+	}
+
+	public void setDamage(short damage) {
 		this.damage = damage;
 	}
+	
 	
 	
 }
