@@ -132,6 +132,7 @@ public class MenuController{
 		stage.setTitle("Goblin Slayer");
 		stage.setScene(scene);
 		stage.getIcons().add(new Image("icon.png"));
+		stage.setFullScreen(true);
 		stage.show();
 		
         
