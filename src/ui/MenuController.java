@@ -136,5 +136,6 @@ public class MenuController{
 
     @FXML
     void initialize() {
+    	
     }
 }
