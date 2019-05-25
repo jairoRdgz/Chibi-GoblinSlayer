@@ -66,6 +66,25 @@ public class Player extends Character{
 		this.damage = damage;
 	}
 	
+	public double moveX(int movement) {
+		if(movement == 3) {
+			//Left
+			setPosx(getPosx()-10);
+		}else {
+			//Rigth
+			setPosx(getPosx()+10);
+		}
+		return getPosx();
+	}
 	
-	
+	public double moveY(int movement) {
+		if(movement == 1) {
+			//Up
+			setPosy(getPosy()-10);
+		}else if(movement == 2) {
+			//Down
+			setPosy(getPosy()+10);
+		}
+		return getPosy();
+	}
 }

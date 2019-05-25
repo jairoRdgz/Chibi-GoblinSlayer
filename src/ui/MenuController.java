@@ -117,7 +117,7 @@ public class MenuController{
 					gc.movePlayer(3);
 				}else if(e.getCode().equals(KeyCode.D)) {
 					gc.movePlayer(4);
-				}else if(e.getCode().equals(KeyCode.SPACE)) {
+				}else if(e.getCode().equals(KeyCode.L)) {
 					atack = new AtackThread(gc);
 					atack.start();
 				}
@@ -128,7 +128,6 @@ public class MenuController{
 		stage.setTitle("Goblin Slayer");
 		stage.setScene(scene);
 		stage.getIcons().add(new Image("icon.png"));
-		stage.setFullScreen(true);
 		stage.show();
 		
         

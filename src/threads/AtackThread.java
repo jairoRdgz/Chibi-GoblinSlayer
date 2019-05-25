@@ -15,7 +15,7 @@ public class AtackThread extends Thread{
 		game.atack(1);
 		System.out.println("boomm");
 		try {
-			sleep(500);
+			sleep(300);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

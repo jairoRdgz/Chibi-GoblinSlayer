@@ -5,20 +5,20 @@ public class Enemy extends Character{
 	public static final short CHAMPION = 2;
 	public static final short LORD = 3;
 	
-	private short type;
+	private int type;
 	private double posx;
 	private double posy;
 	private double width;
 	private double heigth;
-	private short lives;
+	private int lives;
 	
-	public Enemy(short t, double x, double y, double w, double h, short l) {
+	public Enemy(int t, double x, double y, double w, double h) {
 		super(x,y,w,h);
 		type = t;
 		lives(t);
 	}
 	
-	private void lives(short types) {
+	private void lives(int types) {
 		if(types == GOBLIN) {
 			lives = 3;
 		}else if (types == CHAMPION) {
@@ -30,11 +30,11 @@ public class Enemy extends Character{
 		}
 	}
 
-	public short getType() {
+	public int getType() {
 		return type;
 	}
 
-	public void setType(short type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 
@@ -70,7 +70,7 @@ public class Enemy extends Character{
 		this.heigth = heigth;
 	}
 
-	public short getLives() {
+	public int getLives() {
 		return lives;
 	}
 
@@ -78,5 +78,34 @@ public class Enemy extends Character{
 		this.lives = lives;
 	}
 	
+	public double moveX(int movement) {
+		if(movement == 3) {
+			//Left
+			setPosx(getPosx()-10);
+		}else {
+			//Right
+			setPosx(getPosx()+10);
+		}
+		return getPosx();
+	}
+	
+	public double moveY(int movement) {
+		if(movement == 1) {
+			//Up
+			setPosy(getPosy()-10);
+		}else if(movement == 2) {
+			//Down
+			setPosy(getPosy()+10);
+		}
+		return getPosy();
+	}
+	
+	public boolean isAlive() {
+		boolean alive = true;
+		if(lives<=0) {
+			alive = false;
+		}
+		return alive;
+	}
 	
 }

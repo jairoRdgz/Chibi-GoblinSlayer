@@ -2,10 +2,10 @@ package threads;
 
 import ui.GameController;
 
-public class GUIMovingPlayer extends Thread{
+public class GUIMovingEnemy extends Thread{
 	private GameController gcGUI;
 
-	public GUIMovingPlayer(GameController gc) {
+	public GUIMovingEnemy(GameController gc) {
 		gcGUI = gc;
 	}
 	
