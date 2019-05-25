@@ -13,14 +13,12 @@ public class AtackThread extends Thread{
 	public void run() {
 		
 		game.atack(1);
-		System.out.println("boomm");
 		try {
 			sleep(300);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("bammm");
 		game.atack(2);
 		
 	}

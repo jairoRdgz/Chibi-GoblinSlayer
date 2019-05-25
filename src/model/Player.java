@@ -87,4 +87,26 @@ public class Player extends Character{
 		}
 		return getPosy();
 	}
+	
+	public double bounceBackY(int movement) {
+		if(movement == 1) {
+			//if it was going UP
+			setPosy(getPosy()+20);
+		}else if(movement == 2) {
+			//if it was going DOWN
+			setPosy(getPosy()-20);
+		}
+		return getPosx();
+	}
+	
+	public double bounceBackX(int movement) {
+		if(movement == 3) {
+			//if it was going LEFT
+			setPosy(getPosx()+20);
+		}else if(movement == 4) {
+			//if it was going RIGHT
+			setPosy(getPosx()-20);
+		}
+		return getPosy();
+	}
 }

@@ -5,14 +5,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MenuController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MenuController">
    <children>
       <ImageView fitHeight="409.0" fitWidth="600.0" layoutY="-2.0">
          <image>
             <Image url="@../images/portada.png" />
          </image>
       </ImageView>
-      <Button fx:id="gameStarter" layoutX="80.0" layoutY="172.0" mnemonicParsing="false" onAction="#startGame" prefHeight="61.0" prefWidth="183.0" text="Start Game" />
+      <Button fx:id="gameStarter" layoutX="80.0" layoutY="172.0" mnemonicParsing="false" onAction="#startGame" prefHeight="61.0" prefWidth="183.0" />
       <Button layoutX="80.0" layoutY="255.0" mnemonicParsing="false" onAction="#createMap" prefHeight="61.0" prefWidth="183.0" text="Create Map" />
       <Button layoutX="563.0" layoutY="14.0" mnemonicParsing="false" onAction="#helpWindow" prefHeight="25.0" prefWidth="23.0" text="?" />
       <Button layoutX="499.0" layoutY="14.0" mnemonicParsing="false" onAction="#showScores" text="Scores" />

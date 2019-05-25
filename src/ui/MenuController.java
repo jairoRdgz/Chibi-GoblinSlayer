@@ -15,6 +15,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -109,15 +111,15 @@ public class MenuController{
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent e) {
-				if(e.getCode().equals(KeyCode.W)) {
+				if(e.getCode().equals(KeyCode.W)||e.getCode().equals(KeyCode.UP)) {
 					gc.movePlayer(1);
-				}else if(e.getCode().equals(KeyCode.S)) {
+				}else if(e.getCode().equals(KeyCode.S)||e.getCode().equals(KeyCode.DOWN)) {
 					gc.movePlayer(2);
-				}else if(e.getCode().equals(KeyCode.A)) {
+				}else if(e.getCode().equals(KeyCode.A)||e.getCode().equals(KeyCode.LEFT)) {
 					gc.movePlayer(3);
-				}else if(e.getCode().equals(KeyCode.D)) {
+				}else if(e.getCode().equals(KeyCode.D)||e.getCode().equals(KeyCode.RIGHT)) {
 					gc.movePlayer(4);
-				}else if(e.getCode().equals(KeyCode.L)) {
+				}else if(e.getCode().equals(KeyCode.L)||e.getCode().equals(KeyCode.Q)) {
 					atack = new AtackThread(gc);
 					atack.start();
 				}
@@ -135,6 +137,7 @@ public class MenuController{
 
     @FXML
     void initialize() {
-    	
+    	Image img = new Image("images/btn1.png");
+    	gameStarter.setBackground(new Background(new BackgroundImage(img, null, null, null, null)));
     }
 }

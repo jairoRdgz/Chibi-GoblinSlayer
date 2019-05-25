@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.TextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -13,8 +14,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -50,10 +53,19 @@ public class GameController {
     @FXML
     private Rectangle enemy;
     
+    @FXML
+    private ImageView heart;
+    
+    @FXML
+    private HBox lifeBar;
+    
     private Player slayer;
     
     private Enemy goblins;
+    
+    private long points;
 
+    //read to know what this does
     @FXML
     void backToMenu(ActionEvent event) throws IOException {
     	Alert confirmation = new Alert(AlertType.NONE);
@@ -80,46 +92,68 @@ public class GameController {
 		}
     }
     
+    //just read 
     public void movePlayer(int movement) {
-    	if(true) {
-    		if(movement == 1) {
-    			//Up
-    			if(player.getY()>=-238) {
-    				player.setY(slayer.moveY(movement));
-        			atackBox.setY(player.getY());
-        			Image img1 = new Image("images/player2.jpg");
-        			player.setFill(new ImagePattern(img1));
-    			}
-    		}else if(movement == 2) {
-    			//Down
-    			if(player.getY()<=50) {
-    				player.setY(slayer.moveY(movement));
-        			atackBox.setY(player.getY());
-        			Image img1 = new Image("images/player1.jpg");
-        			player.setFill(new ImagePattern(img1));
-    			}
-    			
-    		}else  if(movement == 3) {
-    			//Left
-    			if(player.getX()>= -240) {
-    				player.setX(slayer.moveX(movement));
-        			atackBox.setX(player.getX());
-        			Image img1 = new Image("images/player3.jpg");
-        			player.setFill(new ImagePattern(img1));
-    			}
-    			
-    		}else {
-    			//Rigth
-    			if(player.getX()<= 300) {
-    				player.setX(slayer.moveX(movement));
-        			atackBox.setX(player.getX());
-        			Image img1 = new Image("images/player4.jpg");
-        			player.setFill(new ImagePattern(img1));
-    			}
-    		}
-    	}
+		if(movement == 1) {
+			//Up
+			if(player.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
+				//it will bounce the opposite direction so we now it hits
+				player.setY(slayer.bounceBackY(movement));
+				atackBox.setY(player.getY());
+			}else{
+				if(player.getY()>=-238) {
+					player.setY(slayer.moveY(movement));
+	    			atackBox.setY(player.getY());
+	    			Image img1 = new Image("images/player2.jpg");
+	    			player.setFill(new ImagePattern(img1));
+				}
+			}
+		}else if(movement == 2) {
+			//Down
+			if(player.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
+				//it will bounce the opposite direction so we now it hits
+				player.setY(slayer.bounceBackY(movement));
+				atackBox.setY(player.getY());
+			}else{
+				if(player.getY()<=50) {
+					player.setY(slayer.moveY(movement));
+	    			atackBox.setY(player.getY());
+	    			Image img1 = new Image("images/player1.jpg");
+	    			player.setFill(new ImagePattern(img1));
+				}
+			}
+		}else  if(movement == 3) {
+			//Left
+			if(player.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
+				//it will bounce the opposite direction so we now it hits
+				player.setX(slayer.bounceBackX(movement));
+				atackBox.setX(player.getX());
+			}else{
+				if(player.getX()>= -240) {
+					player.setX(slayer.moveX(movement));
+	    			atackBox.setX(player.getX());
+	    			Image img1 = new Image("images/player3.jpg");
+	    			player.setFill(new ImagePattern(img1));
+				}
+			}
+		}else {
+			//Rigth
+			if(player.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
+				//it will bounce the opposite direction so we now it hits
+				player.setX(slayer.bounceBackX(movement));
+				atackBox.setX(player.getX());
+			}else {
+				if(player.getX()<= 300) {
+					player.setX(slayer.moveX(movement));
+	    			atackBox.setX(player.getX());
+	    			Image img1 = new Image("images/player4.jpg");
+	    			player.setFill(new ImagePattern(img1));
+				}
+			}
+		}
 	}
     
+    //Read you lazy mf
     public void atack(int atack) {
 		if(atack == 1) {
 			atackBox.setHeight(atackBox.getHeight()+20);
@@ -132,8 +166,16 @@ public class GameController {
 			atackBox.setLayoutX(atackBox.getLayoutX()+10);
 			atackBox.setLayoutY(atackBox.getLayoutY()+10);
 		}
+		
+		if(atackBox.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
+			goblins.setLives(goblins.getLives()-1);
+			if(goblins.getLives()<=0) {
+				enemy.setVisible(false);
+			}
+		}
 	}
     
+    //read you lazy mf
     public void moveGoblin(int movement) {
 		if(movement == 1) {
 			//Up
@@ -158,26 +200,32 @@ public class GameController {
 		}
     }
     
+    //not sure what is this DO NOT DELETE
     public GameController getController() {
 		return this;
 	}
 
     @FXML
     void initialize() {
-    	EnemyThread t = new EnemyThread(this, true);
-    	t.start();
-    	
-    	Image imgEnemy = new Image("images/goblin1.jpg");
-    	enemy.setFill(new ImagePattern(imgEnemy));
-    	
+    	//The anti-NullPointers :v
     	goblins = new Enemy(1, enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
     	slayer = new Player(player.getX(), player.getY(), player.getWidth(), player.getHeight());
     	
-		
+    	//The thread that is supposed to move the enemys #help
+    	EnemyThread t = new EnemyThread(this, true);
+    	t.start();
+    	
+    	//The enemy test its only to test it
+    	Image imgEnemy = new Image("images/goblin1.jpg");
+    	enemy.setFill(new ImagePattern(imgEnemy));
+    	
+    	
+		//The player image
 		Image img = new Image("images/player1.jpg");
 		player.setFill(new ImagePattern(img));
-		Image img1 = new Image("images/map2.jpg");
-		fondo.setImage(img1);
-
+		
+		points = System.currentTimeMillis();
+		
+		newLevel.setVisible(false);
     }
 }

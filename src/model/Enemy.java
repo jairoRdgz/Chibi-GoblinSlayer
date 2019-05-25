@@ -74,7 +74,7 @@ public class Enemy extends Character{
 		return lives;
 	}
 
-	public void setLives(short lives) {
+	public void setLives(int lives) {
 		this.lives = lives;
 	}
 	
