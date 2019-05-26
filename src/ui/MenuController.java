@@ -126,13 +126,29 @@ public class MenuController{
 			@Override
 			public void handle(KeyEvent e) {
 				if(e.getCode().equals(KeyCode.W)||e.getCode().equals(KeyCode.UP)) {
-					gc.movePlayer(1);
+					try {
+						gc.movePlayer(1);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}else if(e.getCode().equals(KeyCode.S)||e.getCode().equals(KeyCode.DOWN)) {
-					gc.movePlayer(2);
+					try {
+						gc.movePlayer(2);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}else if(e.getCode().equals(KeyCode.A)||e.getCode().equals(KeyCode.LEFT)) {
-					gc.movePlayer(3);
+					try {
+						gc.movePlayer(3);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}else if(e.getCode().equals(KeyCode.D)||e.getCode().equals(KeyCode.RIGHT)) {
-					gc.movePlayer(4);
+					try {
+						gc.movePlayer(4);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}else if(e.getCode().equals(KeyCode.L)||e.getCode().equals(KeyCode.Q)) {
 					atack = new AtackThread(gc);
 					atack.start();

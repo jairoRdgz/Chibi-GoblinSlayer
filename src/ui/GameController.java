@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,12 +21,14 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.Enemy;
 import model.Game;
 import model.Player;
@@ -58,6 +65,9 @@ public class GameController {
     
     @FXML
     private HBox lifeBar;
+    
+    @FXML
+    private BorderPane everyThing;
     
     private Game game;
     
@@ -97,6 +107,23 @@ public class GameController {
 		}
 		
     }
+    
+    public void transitionBetweenLevels() throws IOException {
+    	Parent root = FXMLLoader.load(getClass().getResource("transition.fxml"));
+    	Scene scene = newLevel.getScene();
+    	
+    	root.translateXProperty().set(scene.getHeight());
+    	everyThing.getChildren().add(root);
+    	
+    	Timeline timeline = new Timeline();
+    	KeyValue kv = new KeyValue(root.translateXProperty(),0,Interpolator.EASE_IN);
+    	KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+    	timeline.getKeyFrames().add(kf);
+    	timeline.setOnFinished(event -> {
+    		everyThing.getChildren().remove(ground);
+    	});
+    	timeline.play();
+    }
 
     public void newScore() {
     	points = System.currentTimeMillis()-points;
@@ -113,7 +140,7 @@ public class GameController {
     }
     
     //just read 
-    public void movePlayer(int movement) {
+    public void movePlayer(int movement) throws IOException {
 		if(movement == 1) {
 			//Up
 			if(player.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
@@ -131,6 +158,7 @@ public class GameController {
 			if(newLevel.isVisible()) {
 				if(player.getBoundsInParent().intersects(newLevel.getBoundsInParent())) {
 					System.out.println("Cambiar de nivel");
+					transitionBetweenLevels();
 				}
 			}
 		}else if(movement == 2) {
@@ -140,7 +168,7 @@ public class GameController {
 				player.setY(slayer.bounceBackY(movement));
 				atackBox.setY(player.getY());
 			}else{
-				if(player.getY()<=50) {
+				if(player.getY()<=20) {
 					player.setY(slayer.moveY(movement));
 	    			atackBox.setY(player.getY());
 	    			Image img1 = new Image("images/player1.jpg");
@@ -192,10 +220,6 @@ public class GameController {
 			}
 		}
 	}
-    
-    public void changeLevel() {
-    	
-    }
     
     //Read you lazy mf
     public void atack(int atack) {
