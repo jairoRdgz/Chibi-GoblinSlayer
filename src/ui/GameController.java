@@ -1,6 +1,5 @@
 package ui;
 
-import java.awt.TextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -24,6 +23,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.Enemy;
+import model.Game;
 import model.Player;
 import threads.EnemyThread;
 
@@ -59,6 +59,8 @@ public class GameController {
     @FXML
     private HBox lifeBar;
     
+    private Game game;
+    
     private Player slayer;
     
     private Enemy goblins;
@@ -68,6 +70,9 @@ public class GameController {
     //read to know what this does
     @FXML
     void backToMenu(ActionEvent event) throws IOException {
+    	game = new Game();
+    	newScore();
+    	
     	Alert confirmation = new Alert(AlertType.NONE);
 		confirmation.setTitle("Goblin Slayer");
 		confirmation.setContentText("Are you sure you want to leave the game \nyour progress wont be saved");
@@ -90,6 +95,21 @@ public class GameController {
 			stage.getIcons().add(new Image("icon.png"));
 			stage.show();
 		}
+		
+    }
+
+    public void newScore() {
+    	points = System.currentTimeMillis()-points;
+    	TextInputDialog end = new TextInputDialog();
+    	end.setTitle("Goblin Slayer");
+    	end.setHeaderText("Add your score to our list");
+    	end.setContentText("Your score is: "+points+"\nPlease enter your NickName: ");
+    	
+    	Optional<String> nick = end.showAndWait();
+    	if(nick.isPresent()) {
+    		game.addScore(points, nick.get());
+    	}
+    	
     }
     
     //just read 
@@ -171,6 +191,7 @@ public class GameController {
 			goblins.setLives(goblins.getLives()-1);
 			if(goblins.getLives()<=0) {
 				enemy.setVisible(false);
+				newLevel.setVisible(true);
 			}
 		}
 	}
@@ -211,7 +232,7 @@ public class GameController {
     	goblins = new Enemy(1, enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
     	slayer = new Player(player.getX(), player.getY(), player.getWidth(), player.getHeight());
     	
-    	//The thread that is supposed to move the enemys #help
+    	//The thread that is supposed to move the enemies #help
     	EnemyThread t = new EnemyThread(this, true);
     	t.start();
     	

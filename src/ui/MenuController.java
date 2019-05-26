@@ -2,6 +2,8 @@ package ui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,6 +22,8 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Game;
+import model.Score;
 import threads.AtackThread;
 
 /**
@@ -45,6 +49,8 @@ public class MenuController{
     private URL location;
     
     private AtackThread atack;
+    
+    private Game game;
 
     //--------------------------------------------------------------------------------------
     //METHODS
@@ -59,6 +65,15 @@ public class MenuController{
 
     }
     
+    public String showScoresList() {
+    	String scores = "";
+    	List<Score> l = game.inOrderScores();
+    	for (int i = 0; i < l.size(); i++) {
+			scores += l.get(i).getNick() + "\t" + l.get(i).getScore()+"\n";
+		}
+    	return scores;
+    }
+    
     /**
      * Creates an alert the will pop up to show the top 10 players of the game sorting them by the
      * time they took to pass all the game
@@ -70,8 +85,7 @@ public class MenuController{
     	score.setTitle("Goblin Slayer");
     	score.setHeaderText("High Scores");
     	score.initStyle(StageStyle.DECORATED);
-    	score.setContentText("NickName \t\t Game Time \n");
-    	
+    	score.setContentText("NickName \t\t Game Time \n"+showScoresList());
     	score.show();
     }
     
@@ -137,6 +151,8 @@ public class MenuController{
 
     @FXML
     void initialize() {
+    	game = new Game();
+    	
     	Image img = new Image("images/btn1.png");
     	gameStarter.setBackground(new Background(new BackgroundImage(img, null, null, null, null)));
     }

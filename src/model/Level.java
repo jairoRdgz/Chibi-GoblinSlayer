@@ -7,8 +7,8 @@ public class Level {
 	private Enemy[] enemies;
 	private Object[] objects;
 	
-	public Level(Player play) {
-		play = createNewPlayer();
+	public Level() {
+		player = createNewPlayer();
 	}
 
 	public Player getPlayer() {
@@ -36,14 +36,14 @@ public class Level {
 	}
 	
 	public Player createNewPlayer() {
-		Player player = new Player(0.0, 0.0, 78.0, 53.0);
+		Player player = new Player(0.0, 0.0, 53.0, 78.0);
 		return player;
 	}
 	
 	public Enemy[] createEnemies() {
 		
 		Random rnd = new Random();
-		enemies = new Enemy[rnd.nextInt(20)];
+		enemies = new Enemy[rnd.nextInt(5)];
 		return enemies;
 	}
 	
