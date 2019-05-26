@@ -19,7 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
+import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.Enemy;
@@ -48,7 +48,7 @@ public class GameController {
     private Rectangle player;
 
     @FXML
-    private Circle newLevel;
+    private Ellipse newLevel;
 
     @FXML
     private Rectangle enemy;
@@ -128,6 +128,11 @@ public class GameController {
 	    			player.setFill(new ImagePattern(img1));
 				}
 			}
+			if(newLevel.isVisible()) {
+				if(player.getBoundsInParent().intersects(newLevel.getBoundsInParent())) {
+					System.out.println("Cambiar de nivel");
+				}
+			}
 		}else if(movement == 2) {
 			//Down
 			if(player.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
@@ -140,6 +145,11 @@ public class GameController {
 	    			atackBox.setY(player.getY());
 	    			Image img1 = new Image("images/player1.jpg");
 	    			player.setFill(new ImagePattern(img1));
+				}
+			}
+			if(newLevel.isVisible()) {
+				if(player.getBoundsInParent().intersects(newLevel.getBoundsInParent())) {
+					System.out.println("Cambiar de nivel");
 				}
 			}
 		}else  if(movement == 3) {
@@ -156,6 +166,11 @@ public class GameController {
 	    			player.setFill(new ImagePattern(img1));
 				}
 			}
+			if(newLevel.isVisible()) {
+				if(player.getBoundsInParent().intersects(newLevel.getBoundsInParent())) {
+					System.out.println("Cambiar de nivel");
+				}
+			}
 		}else {
 			//Rigth
 			if(player.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
@@ -170,8 +185,17 @@ public class GameController {
 	    			player.setFill(new ImagePattern(img1));
 				}
 			}
+			if(newLevel.isVisible()) {
+				if(player.getBoundsInParent().intersects(newLevel.getBoundsInParent())) {
+					System.out.println("Cambiar de nivel");
+				}
+			}
 		}
 	}
+    
+    public void changeLevel() {
+    	
+    }
     
     //Read you lazy mf
     public void atack(int atack) {
@@ -247,6 +271,9 @@ public class GameController {
 		
 		points = System.currentTimeMillis();
 		
+		Image portal = new Image("images/portal.png");
+		newLevel.setFill(new ImagePattern(portal));
 		newLevel.setVisible(false);
+		
     }
 }

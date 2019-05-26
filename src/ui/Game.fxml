@@ -7,8 +7,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.GameController">
    <center>
@@ -20,8 +21,8 @@
                </image></ImageView>
             <Rectangle fx:id="atackBox" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="78.0" layoutX="240.0" layoutY="244.0" stroke="BLACK" strokeType="INSIDE" width="53.0" />
             <Rectangle fx:id="player" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="78.0" layoutX="240.0" layoutY="244.0" stroke="BLACK" strokeType="INSIDE" width="53.0" />
-            <Circle fx:id="newLevel" fill="DODGERBLUE" layoutX="282.0" layoutY="32.0" radius="26.0" stroke="BLACK" strokeType="INSIDE" />
             <Rectangle fx:id="enemy" arcHeight="5.0" arcWidth="5.0" fill="#85ff1f" height="64.0" layoutX="509.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="52.0" />
+            <Ellipse fx:id="newLevel" fill="DODGERBLUE" layoutX="282.0" layoutY="71.0" radiusX="42.0" radiusY="57.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </Pane>
    </center>
@@ -29,9 +30,8 @@
       <Pane prefHeight="30.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Button layoutY="-1.0" mnemonicParsing="false" onAction="#backToMenu" text="Exit" />
-            <HBox fx:id="lifeBar" layoutX="400.0" layoutY="-1.0" prefHeight="25.0" prefWidth="200.0">
+            <HBox fx:id="lifeBar" layoutX="400.0" layoutY="4.0" prefHeight="25.0" prefWidth="200.0">
                <children>
-                  <Label text="Lives:  " />
                   <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/heart.png" />
@@ -49,6 +49,11 @@
                   </ImageView>
                </children>
             </HBox>
+            <Label layoutX="328.0" layoutY="4.0" prefHeight="22.0" prefWidth="67.0" text="Lives:">
+               <font>
+                  <Font name="Consolas Bold" size="19.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </top>
