@@ -73,13 +73,13 @@ public class GameController {
     @FXML
     private BorderPane everyThing;
     
-    private Stage stage;
-    
     private Game game;
     
     private Player slayer;
     
     private Enemy goblins;
+    
+    private ControlThread ct;
     
     private ArrayList<Enemy> enemys;
     private ArrayList<Rectangle> recEnemys;
@@ -89,6 +89,7 @@ public class GameController {
     //read to know what this does
     @FXML
     void backToMenu(ActionEvent event) throws IOException {
+    	
     	game = new Game();
     	newScore();
     	
@@ -243,15 +244,24 @@ public class GameController {
 			atackBox.setLayoutX(atackBox.getLayoutX()+10);
 			atackBox.setLayoutY(atackBox.getLayoutY()+10);
 		}
-		
-		if(atackBox.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
-			goblins.setLives(goblins.getLives()-1);
-			if(goblins.getLives()<=0) {
-				enemy.setVisible(false);
-				newLevel.setVisible(true);
+		killEnemies();
+	}
+    
+    public void killEnemies() {
+    	for (int i = 0; i < enemys.size(); i++) {
+			if(atackBox.getBoundsInParent().intersects(recEnemys.get(i).getBoundsInParent())) {
+				enemys.get(i).setLives(enemys.get(i).getLives()-1);
+				if(enemys.get(i).getLives()<=0) {
+					ground.getChildren().remove(recEnemys.get(i));
+					enemys.remove(i);
+					recEnemys.remove(i);
+				}
 			}
 		}
-	}
+    	if(enemys.size()<=0) {
+    		newLevel.setVisible(true);
+    	}
+    }
     
     //read you lazy mf
     public void moveGoblin(int movement) {
@@ -320,11 +330,10 @@ public class GameController {
     		Rectangle rEne = new Rectangle(enemys.get(i).getPosx(), enemys.get(i).getPosy());
     		Image imgEnemy = new Image("images/goblin1.jpg");
         	rEne.setFill(new ImagePattern(imgEnemy));
+        	recEnemys.add(rEne);
         	ground.getChildren().add(rEne);
-    		recEnemys.add(rEne);
     		System.out.println("enemy rectangulo creado");
-    		
-        	EnemyThread bt = new EnemyThread(this, true, enemys.get(i));
+    		EnemyThread bt = new EnemyThread(this, true, enemys.get(i));
         	bt.setDaemon(true);
         	bt.start();
     	}
@@ -364,7 +373,7 @@ public class GameController {
     	enemys = new ArrayList<Enemy>();
     	recEnemys = new ArrayList<Rectangle>();
     	loadLevel("Data/level0.txt");
-    	ControlThread ct = new ControlThread(this);
+    	ct = new ControlThread(this);
     	ct.setDaemon(true);
     	ct.start();
     	
