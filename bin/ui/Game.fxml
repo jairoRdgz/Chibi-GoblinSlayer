@@ -15,7 +15,7 @@
    <center>
       <Pane fx:id="ground" prefHeight="346.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="fondo" fitHeight="360.0" fitWidth="600.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="fondo" fitHeight="360.0" fitWidth="600.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/soil.jpg" />
                </image></ImageView>
