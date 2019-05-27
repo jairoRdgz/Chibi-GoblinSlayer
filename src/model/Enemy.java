@@ -78,6 +78,51 @@ public class Enemy extends Character{
 		this.lives = lives;
 	}
 	
+	public void moveGoblin(int movement, int max, int maxY) {
+		if(movement == 1) {
+			System.out.println("UP");
+			//Up
+			if(posy-10-heigth>0) {
+
+				posy = posy-10;
+			}else {
+				movement = 2;
+				posy = heigth;					
+			}
+		}else if(movement == 2) {
+			System.out.println("DOWN");
+			//Down
+			if(posy+10+heigth<maxY) {
+
+				posy = posy+10;
+			}else {
+				movement = 1;
+				posy = max-heigth;					
+			}
+		}else if(movement == 3) {
+			System.out.println("LEFT");
+			//Left
+			if(posx-10-width>0) {
+
+				posx = posx-10;
+			}else {
+				movement = 4;
+				posx = width;					
+			}
+		}else {
+			System.out.println("RIGHT");
+			//Right
+			if(posx+10+width<max) {
+
+				posx = posx+10;
+			}else {
+				movement = 3;
+				posx = max-width;					
+			}
+		}
+		
+	}
+	
 	public double moveX(int movement) {
 		if(movement == 3) {
 			//Left
