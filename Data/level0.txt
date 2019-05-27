@@ -1,0 +1,7 @@
+#level
+0
+#LayoutX LayoutY
+0-90
+100-10
+200-10
+0-70

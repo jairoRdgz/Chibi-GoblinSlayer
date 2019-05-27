@@ -11,6 +11,6 @@ public class GUIMovingEnemy extends Thread{
 	
 	 @Override
 	 public void run() {
-		 
+		 gcGUI.update();
 	 }
 }

@@ -1,10 +1,13 @@
 package ui;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -32,6 +35,7 @@ import javafx.util.Duration;
 import model.Enemy;
 import model.Game;
 import model.Player;
+import threads.ControlThread;
 import threads.EnemyThread;
 
 public class GameController {
@@ -69,11 +73,16 @@ public class GameController {
     @FXML
     private BorderPane everyThing;
     
+    private Stage stage;
+    
     private Game game;
     
     private Player slayer;
     
     private Enemy goblins;
+    
+    private ArrayList<Enemy> enemys;
+    private ArrayList<Rectangle> recEnemys;
     
     private long points;
 
@@ -273,20 +282,91 @@ public class GameController {
     public GameController getController() {
 		return this;
 	}
+    
+    public void loadLevel(String path) {
+    	int layoutX = 0;
+    	int layoutY = 0;
+    	
+    	try {
+    		
+    		File f = new File(path);
+    		FileReader fr = new FileReader(f);
+    		BufferedReader br = new BufferedReader(fr);
+		
+    		String line = br.readLine();
+    		line = br.readLine();
+    		line = br.readLine();
+    		line = br.readLine();
+    		
+    		while(line != null) {
+    			
+				String[] variables = line.split("-");
+				layoutX = Integer.parseInt(variables[0]);
+				layoutY = Integer.parseInt(variables[1]);
+				
+				Enemy ene = new Enemy(1, layoutX, layoutY, 10, 10);
+				enemys.add(ene);
+				line = br.readLine();
+				System.out.println("enemy creado");
+			}
+    		
+			br.close();
+    		
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	for(int i = 0 ; i < enemys.size() ; i++) {
+    		Rectangle rEne = new Rectangle(enemys.get(i).getPosx(), enemys.get(i).getPosy());
+    		Image imgEnemy = new Image("images/goblin1.jpg");
+        	rEne.setFill(new ImagePattern(imgEnemy));
+        	ground.getChildren().add(rEne);
+    		recEnemys.add(rEne);
+    		System.out.println("enemy rectangulo creado");
+    		
+        	EnemyThread bt = new EnemyThread(this, true, enemys.get(i));
+        	bt.setDaemon(true);
+        	bt.start();
+    	}
+    	
+    	
+    }
+    
+    public void update() {
+    	for (int id = 0; id < recEnemys.size(); id++) {
+    		recEnemys.get(id).setLayoutX(enemys.get(id).getPosx());
+    		recEnemys.get(id).setLayoutY(enemys.get(id).getPosy());
+    		enemy.setLayoutX(enemys.get(id).getPosx());
+    		System.out.println("enemys actualizados");
+    	}
+    }
+    
+    public double getWith() {
+		return 400;
+	}
+    
+    public double getHeigth() {
+		return 300;
+	}
 
     @FXML
     void initialize() {
     	//The anti-NullPointers :v
-    	goblins = new Enemy(1, enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
+    	//goblins = new Enemy(1, enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
     	slayer = new Player(player.getX(), player.getY(), player.getWidth(), player.getHeight());
     	
     	//The thread that is supposed to move the enemies #help
-    	EnemyThread t = new EnemyThread(this, true);
-    	t.start();
     	
     	//The enemy test its only to test it
     	Image imgEnemy = new Image("images/goblin1.jpg");
     	enemy.setFill(new ImagePattern(imgEnemy));
+    	
+    	enemys = new ArrayList<Enemy>();
+    	recEnemys = new ArrayList<Rectangle>();
+    	loadLevel("Data/level0.txt");
+    	ControlThread ct = new ControlThread(this);
+    	ct.setDaemon(true);
+    	ct.start();
     	
     	
 		//The player image
