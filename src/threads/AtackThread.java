@@ -1,7 +1,14 @@
 	package threads;
 
 import ui.GameController;;
-
+/**
+ * This class is the thread that controls the attack of the player.
+ * This class extends from Thread.
+ * @author Critian Camilo Lasso
+ * @author Jairo E. Rodriguez
+ * @author Santiago Valencia
+ *
+ */
 public class AtackThread extends Thread{
 	
 	private GameController game;

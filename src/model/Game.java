@@ -2,29 +2,52 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * This class contains the attributes from the Game
+ * @author Critian Camilo Lasso
+ * @author Jairo E. Rodriguez
+ * @author Santiago Valencia
+ *
+ */
 public class Game {
 	private Level[] levels;
 	private Level level;
 	private Score root;
 	
-	
+	/**
+	 * Empty constructor
+	 */
 	public Game() {
 		
 	}
-	
+	/**
+	 * gets the number of enemies
+	 * @return
+	 */
 	public int getEnemiesNumber() {
 		return level.getEnemys().length;
 	}
 	
+	/**
+	 * gets the level of the game
+	 * @return
+	 */
 	public Level getLevel() {
 		return level;
 	}
 	
+	/**
+	 * gets the levels
+	 * @return
+	 */
 	public Level[] getLevels() {
 		return levels;
 	}
 	
+	/**
+	 * sets the levels of the game
+	 * @param level
+	 */
 	public void setLevel(Level[] level) {
 		this.levels = level;
 	}
@@ -60,10 +83,18 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * this method sorts the binary tree inOrder
+	 * @return
+	 */
 	public List<Score> inOrderScores() {
 		return inOrderScores(root);
 	}
-	
+	/**
+	 * recursive method to to the sorting
+	 * @param current
+	 * @return
+	 */
 	private List<Score> inOrderScores(Score current){
 		List<Score> l = new ArrayList<Score>();
 		if(current!=null) {
@@ -75,6 +106,9 @@ public class Game {
 		return l;
 	}
 	
+	/**
+	 * initialize method
+	 */
 	public void initialize() {
 		level = new Level();
 	}

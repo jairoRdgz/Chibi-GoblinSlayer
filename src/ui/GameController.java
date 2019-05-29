@@ -37,7 +37,14 @@ import model.Game;
 import model.Player;
 import threads.ControlThread;
 import threads.EnemyThread;
-
+/**
+ * This class is in charge of controlling the GUI of the game screen for this program.
+ * Is in charge of the logic to move the player and the enemies in the screen.
+ * @author Critian Camilo Lasso
+ * @author Jairo E. Rodriguez
+ * @author Santiago Valencia
+ *
+ */
 public class GameController {
 
     @FXML
@@ -86,7 +93,11 @@ public class GameController {
     
     private long points;
 
-    //read to know what this does
+    /**
+     * This OnAction serves to return to the Menu from the game screen
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void backToMenu(ActionEvent event) throws IOException {
     	
@@ -117,7 +128,10 @@ public class GameController {
 		}
 		
     }
-    
+    /**
+     * This method is to make the transitions between the different scenes
+     * @throws IOException
+     */
     public void transitionBetweenLevels() throws IOException {
     	Parent root = FXMLLoader.load(getClass().getResource("transition.fxml"));
     	Scene scene = newLevel.getScene();
@@ -134,7 +148,10 @@ public class GameController {
     	});
     	timeline.play();
     }
-
+    
+    /**
+     * this method is to add a new score to the game
+     */
     public void newScore() {
     	points = System.currentTimeMillis()-points;
     	TextInputDialog end = new TextInputDialog();
@@ -149,7 +166,13 @@ public class GameController {
     	
     }
     
-    //just read 
+    /**
+     * This method moves the player(slayer) on the screen.
+     * It also know if the player intersects with the enemy.
+     * and this change the level.
+     * @param movement
+     * @throws IOException
+     */
     public void movePlayer(int movement) throws IOException {
 		if(movement == 1) {
 			//Up
@@ -231,7 +254,10 @@ public class GameController {
 		}
 	}
     
-    //Read you lazy mf
+    /**
+     * This method is in charge of the slayer attack
+     * @param atack
+     */
     public void atack(int atack) {
 		if(atack == 1) {
 			atackBox.setHeight(atackBox.getHeight()+20);
@@ -247,6 +273,9 @@ public class GameController {
 		killEnemies();
 	}
     
+    /**
+     * This method recognizes when an enemy is murdered
+     */
     public void killEnemies() {
     	for (int i = 0; i < enemys.size(); i++) {
 			if(atackBox.getBoundsInParent().intersects(recEnemys.get(i).getBoundsInParent())) {
@@ -263,7 +292,10 @@ public class GameController {
     	}
     }
     
-    //read you lazy mf
+    /**
+     * This method moves the enemies(goblins) on the screen
+     * @param movement
+     */
     public void moveGoblin(int movement) {
 		if(movement == 1) {
 			//Up
@@ -288,11 +320,17 @@ public class GameController {
 		}
     }
     
-    //not sure what is this DO NOT DELETE
+    /**
+     * not sure what is this DO NOT DELETE
+     * @return
+     */
     public GameController getController() {
 		return this;
 	}
-    
+    /**
+     * This method is in charge to load the level to start the game
+     * @param path
+     */
     public void loadLevel(String path) {
     	int layoutX = 0;
     	int layoutY = 0;
@@ -340,7 +378,9 @@ public class GameController {
     	
     	
     }
-    
+    /**
+     * This method update the enemies status
+     */
     public void update() {
     	for (int id = 0; id < recEnemys.size(); id++) {
     		recEnemys.get(id).setLayoutX(enemys.get(id).getPosx());
@@ -349,15 +389,27 @@ public class GameController {
     		System.out.println("enemys actualizados");
     	}
     }
-    
+    /**
+     * This method gets the width
+     * @return
+     */
     public double getWith() {
 		return 400;
 	}
-    
+    /**
+     * This method gets the heigth
+     * @return
+     */
     public double getHeigth() {
 		return 300;
 	}
 
+    /**
+     * This method initializes the scene 
+     * The slayer
+     * The enemies
+     * The map
+     */
     @FXML
     void initialize() {
     	//The anti-NullPointers :v

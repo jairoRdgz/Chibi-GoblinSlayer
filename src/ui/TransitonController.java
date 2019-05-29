@@ -17,6 +17,12 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import model.Game;
 
+/**
+ *This class is in charge of controlling the GUI of the transition between levels screen
+ * @author Critian Camilo Lasso
+ * @author Jairo E. Rodriguez
+ * @author Santiago Valencia
+ */
 public class TransitonController {
 
     @FXML
@@ -33,6 +39,10 @@ public class TransitonController {
     
     private Game game;
 
+    /**
+     * This methos is n charge of the logic to change the scene between levels
+     * @throws IOException
+     */
     public void transitionBetweenLevels() throws IOException {
     	Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
     	Scene scene = lives.getScene();
@@ -50,6 +60,9 @@ public class TransitonController {
     	timeline.play();
     }
 
+    /**
+     * initialize method to set the lives of the player between levels
+     */
     @FXML
     void initialize() {
     	lives.setText(game.getLevel().getPlayer().getLives()+"");

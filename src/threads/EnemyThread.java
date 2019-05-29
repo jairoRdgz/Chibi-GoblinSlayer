@@ -4,7 +4,14 @@ import java.util.Random;
 
 import model.Enemy;
 import ui.GameController;
-
+/**
+ * This class helps to move the goblin
+ * This class extends from Thread.
+ * @author Critian Camilo Lasso
+ * @author Jairo E. Rodriguez
+ * @author Santiago Valencia
+ *
+ */
 public class EnemyThread extends Thread{
 	
 	private GameController game;

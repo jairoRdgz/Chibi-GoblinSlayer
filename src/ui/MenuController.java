@@ -64,7 +64,10 @@ public class MenuController{
     void createMap(ActionEvent event) {
 
     }
-    
+    /**
+     * Shows a list with the scores of each person that had played the game
+     * @return
+     */
     public String showScoresList() {
     	String scores = "";
     	List<Score> l = game.inOrderScores();

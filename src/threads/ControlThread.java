@@ -2,7 +2,14 @@ package threads;
 
 import javafx.application.Platform;
 import ui.GameController;
-
+/**
+ * This class controls the movement of the enemies
+ * This class extends from Thread.
+ * @author Critian Camilo Lasso
+ * @author Jairo E. Rodriguez
+ * @author Santiago Valencia
+ *
+ */
 public class ControlThread extends Thread{
 	
 	private GameController gc;
