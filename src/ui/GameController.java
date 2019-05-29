@@ -365,9 +365,10 @@ public class GameController {
     	}
     	
     	for(int i = 0 ; i < enemys.size() ; i++) {
-    		Rectangle rEne = new Rectangle(enemys.get(i).getPosx(), enemys.get(i).getPosy());
+    		Rectangle rEne = new Rectangle(enemys.get(i).getPosx(), enemys.get(i).getPosy(), 50, 50);
     		Image imgEnemy = new Image("images/goblin1.jpg");
         	rEne.setFill(new ImagePattern(imgEnemy));
+        	rEne.setVisible(true);
         	recEnemys.add(rEne);
         	ground.getChildren().add(rEne);
     		System.out.println("enemy rectangulo creado");
@@ -421,6 +422,7 @@ public class GameController {
     	//The enemy test its only to test it
     	Image imgEnemy = new Image("images/goblin1.jpg");
     	enemy.setFill(new ImagePattern(imgEnemy));
+    	enemy.setVisible(false);
     	
     	enemys = new ArrayList<Enemy>();
     	recEnemys = new ArrayList<Rectangle>();
