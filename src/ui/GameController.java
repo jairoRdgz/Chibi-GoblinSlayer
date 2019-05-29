@@ -123,7 +123,11 @@ public class GameController {
 			endGame();
 		}
     }
-    
+     /**
+      * This method is in charge to end the game
+      * it closes the game scene and goes back to the Menu
+      * @throws IOException
+      */
     public void endGame() throws IOException {
     	Parent game = FXMLLoader.load(getClass().getResource("Menu.fxml"));
 
@@ -272,6 +276,10 @@ public class GameController {
 		}
 	}
     
+    /**
+     * This method is in charge of count and set the amount of lives of the player
+     * @throws IOException
+     */
     public void loseLives() throws IOException {
     	int hits =slayer.getLives();
     	slayer.setLives(slayer.getLives()-1);
