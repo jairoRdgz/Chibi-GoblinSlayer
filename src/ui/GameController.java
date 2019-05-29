@@ -75,10 +75,16 @@ public class GameController {
     private ImageView heart;
     
     @FXML
-    private HBox lifeBar;
+    private ImageView heart1;
+
+    @FXML
+    private ImageView heart2;
     
     @FXML
     private BorderPane everyThing;
+    
+    @FXML
+    private HBox vidas;
     
     private Game game;
     
@@ -100,8 +106,6 @@ public class GameController {
      */
     @FXML
     void backToMenu(ActionEvent event) throws IOException {
-    	
-    	game = new Game();
     	newScore();
     	
     	Alert confirmation = new Alert(AlertType.NONE);
@@ -116,24 +120,27 @@ public class GameController {
 		Optional<ButtonType> result = confirmation.showAndWait();
 
 		if (result.get() == buttonTypeYes) {
-			Parent game = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-
-			Scene scene = new Scene(game);
-
-			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			stage.setTitle("Goblin Slayer");
-			stage.setScene(scene);
-			stage.getIcons().add(new Image("icon.png"));
-			stage.show();
+			endGame();
 		}
-		
+    }
+    
+    public void endGame() throws IOException {
+    	Parent game = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+
+		Scene scene = new Scene(game);
+
+		Stage stage = (Stage) player.getScene().getWindow();
+		stage.setTitle("Goblin Slayer");
+		stage.setScene(scene);
+		stage.getIcons().add(new Image("icon.png"));
+		stage.show();
     }
     /**
      * This method is to make the transitions between the different scenes
      * @throws IOException
      */
     public void transitionBetweenLevels() throws IOException {
-    	Parent root = FXMLLoader.load(getClass().getResource("transition.fxml"));
+    	Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
     	Scene scene = newLevel.getScene();
     	
     	root.translateXProperty().set(scene.getHeight());
@@ -178,8 +185,10 @@ public class GameController {
 			//Up
 			if(player.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
 				//it will bounce the opposite direction so we now it hits
-				player.setY(slayer.bounceBackY(movement));
+				player.setY(slayer.getHit());
+				//player.setY(slayer.bounceBackY(movement));
 				atackBox.setY(player.getY());
+				loseLives();
 			}else{
 				if(player.getY()>=-238) {
 					player.setY(slayer.moveY(movement));
@@ -198,8 +207,10 @@ public class GameController {
 			//Down
 			if(player.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
 				//it will bounce the opposite direction so we now it hits
-				player.setY(slayer.bounceBackY(movement));
+				player.setY(slayer.getHit());
+				//player.setY(slayer.bounceBackY(movement));
 				atackBox.setY(player.getY());
+				loseLives();
 			}else{
 				if(player.getY()<=20) {
 					player.setY(slayer.moveY(movement));
@@ -211,14 +222,17 @@ public class GameController {
 			if(newLevel.isVisible()) {
 				if(player.getBoundsInParent().intersects(newLevel.getBoundsInParent())) {
 					System.out.println("Cambiar de nivel");
+					transitionBetweenLevels();
 				}
 			}
 		}else  if(movement == 3) {
 			//Left
 			if(player.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
 				//it will bounce the opposite direction so we now it hits
-				player.setX(slayer.bounceBackX(movement));
+				player.setX(slayer.getHit());
+				//player.setX(slayer.bounceBackX(movement));
 				atackBox.setX(player.getX());
+				loseLives();
 			}else{
 				if(player.getX()>= -240) {
 					player.setX(slayer.moveX(movement));
@@ -230,14 +244,17 @@ public class GameController {
 			if(newLevel.isVisible()) {
 				if(player.getBoundsInParent().intersects(newLevel.getBoundsInParent())) {
 					System.out.println("Cambiar de nivel");
+					transitionBetweenLevels();
 				}
 			}
 		}else {
 			//Rigth
 			if(player.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
 				//it will bounce the opposite direction so we now it hits
+				player.setX(slayer.getHit());
 				player.setX(slayer.bounceBackX(movement));
 				atackBox.setX(player.getX());
+				loseLives();
 			}else {
 				if(player.getX()<= 300) {
 					player.setX(slayer.moveX(movement));
@@ -249,10 +266,26 @@ public class GameController {
 			if(newLevel.isVisible()) {
 				if(player.getBoundsInParent().intersects(newLevel.getBoundsInParent())) {
 					System.out.println("Cambiar de nivel");
+					transitionBetweenLevels();
 				}
 			}
 		}
 	}
+    
+    public void loseLives() throws IOException {
+    	int hits =slayer.getLives();
+    	slayer.setLives(slayer.getLives()-1);
+    	if(hits==3) {
+    		heart2.setVisible(false);
+    	}else if(hits == 2) {
+    		heart1.setVisible(false);
+    	}else if (hits == 1) {
+    		heart.setVisible(false);
+    		newScore();
+    		endGame();
+    	}
+    	
+    }
     
     /**
      * This method is in charge of the slayer attack
@@ -355,7 +388,7 @@ public class GameController {
 				Enemy ene = new Enemy(1, layoutX, layoutY, 10, 10);
 				enemys.add(ene);
 				line = br.readLine();
-				System.out.println("enemy creado");
+				//System.out.println("enemy creado");
 			}
     		
 			br.close();
@@ -387,7 +420,7 @@ public class GameController {
     		recEnemys.get(id).setLayoutX(enemys.get(id).getPosx());
     		recEnemys.get(id).setLayoutY(enemys.get(id).getPosy());
     		enemy.setLayoutX(enemys.get(id).getPosx());
-    		System.out.println("enemys actualizados");
+    		//System.out.println("enemys actualizados");
     	}
     }
     /**
@@ -398,7 +431,7 @@ public class GameController {
 		return ground.getWidth();
 	}
     /**
-     * This method gets the heigth
+     * This method gets the height
      * @return
      */
     public double getHeigth() {
@@ -416,6 +449,7 @@ public class GameController {
     	//The anti-NullPointers :v
     	//goblins = new Enemy(1, enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
     	slayer = new Player(player.getX(), player.getY(), player.getWidth(), player.getHeight());
+    	game = new Game();
     	
     	//The thread that is supposed to move the enemies #help
     	
@@ -441,6 +475,5 @@ public class GameController {
 		Image portal = new Image("images/portal.png");
 		newLevel.setFill(new ImagePattern(portal));
 		newLevel.setVisible(false);
-		
     }
 }

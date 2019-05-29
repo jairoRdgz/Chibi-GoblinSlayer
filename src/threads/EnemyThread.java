@@ -26,11 +26,11 @@ public class EnemyThread extends Thread{
 	
 	@Override
 	public void run() {
-		System.out.println("RUN");
+		//System.out.println("RUN");
 		while(alive) {
 			Random rnd = new Random();
 			int move = rnd.nextInt(4);
-			System.out.println("MOVE");
+			//System.out.println("MOVE");
 			enemy.moveGoblin(move, (int)game.getWith(), (int)game.getHeigth());
 			
 			try {

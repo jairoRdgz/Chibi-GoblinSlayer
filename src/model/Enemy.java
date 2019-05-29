@@ -143,7 +143,7 @@ public class Enemy extends Character{
 	 */
 	public void moveGoblin(int movement, int max, int maxY) {
 		if(movement == 1) {
-			System.out.println("UP");
+			//System.out.println("UP");
 			//Up
 			if(posy-10-heigth>0) {
 
@@ -153,7 +153,7 @@ public class Enemy extends Character{
 				posy = heigth;					
 			}
 		}else if(movement == 2) {
-			System.out.println("DOWN");
+			//System.out.println("DOWN");
 			//Down
 			if(posy+10+heigth<maxY) {
 
@@ -163,7 +163,7 @@ public class Enemy extends Character{
 				posy = max-heigth;					
 			}
 		}else if(movement == 3) {
-			System.out.println("LEFT");
+			//System.out.println("LEFT");
 			//Left
 			if(posx-10-width>0) {
 
@@ -173,7 +173,7 @@ public class Enemy extends Character{
 				posx = width;					
 			}
 		}else {
-			System.out.println("RIGHT");
+			//System.out.println("RIGHT");
 			//Right
 			if(posx+10+width<max) {
 

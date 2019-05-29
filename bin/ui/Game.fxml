@@ -30,19 +30,19 @@
       <Pane prefHeight="30.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Button layoutY="-1.0" mnemonicParsing="false" onAction="#backToMenu" text="Exit" />
-            <HBox fx:id="lifeBar" layoutX="400.0" layoutY="4.0" prefHeight="25.0" prefWidth="200.0">
+            <HBox fx:id="vidas" layoutX="400.0" layoutY="4.0" prefHeight="25.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="heart" fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/heart.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="heart1" fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/heart.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="heart2" fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/heart.png" />
                      </image>

@@ -12,8 +12,7 @@
             <Image url="@../images/portada.png" />
          </image>
       </ImageView>
-      <Button fx:id="gameStarter" layoutX="80.0" layoutY="172.0" mnemonicParsing="false" onAction="#startGame" prefHeight="61.0" prefWidth="183.0" />
-      <Button layoutX="80.0" layoutY="255.0" mnemonicParsing="false" onAction="#createMap" prefHeight="61.0" prefWidth="183.0" text="Create Map" />
+      <Button fx:id="gameStarter" layoutX="80.0" layoutY="172.0" mnemonicParsing="false" onAction="#startGame" prefHeight="135.0" prefWidth="325.0" />
       <Button layoutX="563.0" layoutY="14.0" mnemonicParsing="false" onAction="#helpWindow" prefHeight="25.0" prefWidth="23.0" text="?" />
       <Button layoutX="499.0" layoutY="14.0" mnemonicParsing="false" onAction="#showScores" text="Scores" />
    </children>
