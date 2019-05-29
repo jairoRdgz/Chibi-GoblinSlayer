@@ -19,6 +19,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -172,6 +175,6 @@ public class MenuController{
     	game = new Game();
     	
     	Image img = new Image("images/btn1.png");
-    	gameStarter.setBackground(new Background(new BackgroundImage(img, null, null, null, null)));
+    	gameStarter.setBackground(new Background(new BackgroundImage(img, BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
     }
 }
