@@ -8,14 +8,14 @@ package model;
  */
 public class Player extends Character{
 	
-	public static final short DEFAULT_LIVES =3 ;
+	public static final int DEFAULT_LIVES =3 ;
 	public static final short DEFAULT_DAMAGE = 1;
 	
 	private double posx;
 	private double posy;
 	private double width;
 	private double heigth;
-	private short lives;
+	private int lives;
 	private short damage;
 	
 	/**
@@ -91,7 +91,7 @@ public class Player extends Character{
 	 * gets the player lives
 	 * @return
 	 */
-	public short getLives() {
+	public int getLives() {
 		return lives;
 	}
 
@@ -99,7 +99,7 @@ public class Player extends Character{
 	 * sets the player lives
 	 * @param lives
 	 */
-	public void setLives(short lives) {
+	public void setLives(int lives) {
 		this.lives = lives;
 	}
 
@@ -181,5 +181,11 @@ public class Player extends Character{
 			setPosy(getPosx()-20);
 		}
 		return getPosy();
+	}
+	
+	public double getHit() {
+		setPosx(0.0);
+		setPosy(0.0);
+		return 0.0;
 	}
 }
