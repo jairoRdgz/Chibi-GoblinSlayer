@@ -395,14 +395,14 @@ public class GameController {
      * @return
      */
     public double getWith() {
-		return 400;
+		return ground.getWidth();
 	}
     /**
      * This method gets the heigth
      * @return
      */
     public double getHeigth() {
-		return 300;
+		return ground.getHeight();
 	}
 
     /**
