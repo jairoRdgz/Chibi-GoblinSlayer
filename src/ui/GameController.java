@@ -197,7 +197,7 @@ public class GameController {
 				if(player.getY()>=-238) {
 					player.setY(slayer.moveY(movement));
 	    			atackBox.setY(player.getY());
-	    			Image img1 = new Image("images/player2.jpg");
+	    			Image img1 = new Image("images/player1.png");
 	    			player.setFill(new ImagePattern(img1));
 				}
 			}
@@ -219,7 +219,7 @@ public class GameController {
 				if(player.getY()<=20) {
 					player.setY(slayer.moveY(movement));
 	    			atackBox.setY(player.getY());
-	    			Image img1 = new Image("images/player1.jpg");
+	    			Image img1 = new Image("images/player2.png");
 	    			player.setFill(new ImagePattern(img1));
 				}
 			}
@@ -241,7 +241,7 @@ public class GameController {
 				if(player.getX()>= -240) {
 					player.setX(slayer.moveX(movement));
 	    			atackBox.setX(player.getX());
-	    			Image img1 = new Image("images/player3.jpg");
+	    			Image img1 = new Image("images/player3.png");
 	    			player.setFill(new ImagePattern(img1));
 				}
 			}
@@ -263,7 +263,7 @@ public class GameController {
 				if(player.getX()<= 300) {
 					player.setX(slayer.moveX(movement));
 	    			atackBox.setX(player.getX());
-	    			Image img1 = new Image("images/player4.jpg");
+	    			Image img1 = new Image("images/player4.png");
 	    			player.setFill(new ImagePattern(img1));
 				}
 			}
@@ -341,22 +341,22 @@ public class GameController {
 		if(movement == 1) {
 			//Up
 			enemy.setY(goblins.moveY(movement));
-			Image img1 = new Image("images/goblin2.jpg");
+			Image img1 = new Image("images/goblin2.png");
 			player.setFill(new ImagePattern(img1));
 		}else if(movement == 2) {
 			//Down
 			player.setY(slayer.moveY(movement));
-			Image img1 = new Image("images/goblin.jpg");
+			Image img1 = new Image("images/goblin.png");
 			player.setFill(new ImagePattern(img1));
 		}else  if(movement == 3) {
 			//Left
 			player.setX(slayer.moveX(movement));
-			Image img1 = new Image("images/goblin3.jpg");
+			Image img1 = new Image("images/goblin3.png");
 			player.setFill(new ImagePattern(img1));
 		}else {
 			//Right
 			player.setX(slayer.moveX(movement));
-			Image img1 = new Image("images/goblin4.jpg");
+			Image img1 = new Image("images/goblin4.png");
 			player.setFill(new ImagePattern(img1));
 		}
     }
@@ -407,7 +407,7 @@ public class GameController {
     	
     	for(int i = 0 ; i < enemys.size() ; i++) {
     		Rectangle rEne = new Rectangle(enemys.get(i).getPosx(), enemys.get(i).getPosy(), 50, 50);
-    		Image imgEnemy = new Image("images/goblin1.jpg");
+    		Image imgEnemy = new Image("images/goblin1.png");
         	rEne.setFill(new ImagePattern(imgEnemy));
         	rEne.setVisible(true);
         	recEnemys.add(rEne);
@@ -462,7 +462,7 @@ public class GameController {
     	//The thread that is supposed to move the enemies #help
     	
     	//The enemy test its only to test it
-    	Image imgEnemy = new Image("images/goblin1.jpg");
+    	Image imgEnemy = new Image("images/goblin1.png");
     	enemy.setFill(new ImagePattern(imgEnemy));
     	enemy.setVisible(false);
     	
@@ -475,7 +475,7 @@ public class GameController {
     	
     	
 		//The player image
-		Image img = new Image("images/player1.jpg");
+		Image img = new Image("images/player1.png");
 		player.setFill(new ImagePattern(img));
 		
 		points = System.currentTimeMillis();
