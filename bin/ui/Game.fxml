@@ -19,8 +19,8 @@
                <image>
                   <Image url="@../images/soil.jpg" />
                </image></ImageView>
-            <Rectangle fx:id="atackBox" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="78.0" layoutX="240.0" layoutY="244.0" stroke="BLACK" strokeType="INSIDE" width="53.0" />
-            <Rectangle fx:id="player" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="78.0" layoutX="240.0" layoutY="244.0" stroke="BLACK" strokeType="INSIDE" width="53.0" />
+            <Rectangle fx:id="atackBox" arcHeight="5.0" arcWidth="5.0" fill="#ff212100" height="78.0" layoutX="240.0" layoutY="244.0" stroke="TRANSPARENT" strokeType="INSIDE" width="53.0" />
+            <Rectangle fx:id="player" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="78.0" layoutX="240.0" layoutY="244.0" stroke="TRANSPARENT" strokeType="INSIDE" width="53.0" />
             <Rectangle fx:id="enemy" arcHeight="5.0" arcWidth="5.0" fill="#85ff1f" height="64.0" layoutX="509.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="52.0" />
             <Ellipse fx:id="newLevel" fill="DODGERBLUE" layoutX="282.0" layoutY="71.0" radiusX="42.0" radiusY="57.0" stroke="BLACK" strokeType="INSIDE" />
          </children>

@@ -412,7 +412,7 @@ public class GameController {
         	rEne.setVisible(true);
         	recEnemys.add(rEne);
         	ground.getChildren().add(rEne);
-    		System.out.println("enemy rectangulo creado");
+    		//System.out.println("enemy rectangulo creado");
     		EnemyThread bt = new EnemyThread(this, true, enemys.get(i));
         	bt.setDaemon(true);
         	bt.start();
